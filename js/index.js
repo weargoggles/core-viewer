@@ -8,13 +8,11 @@ import configureStore from './store';
 
 import {getNewDocument} from './actions';
 import MaybeDocument from './components/maybedocument';
+import ErrorList from './components/errorlist';
+import {AppBar} from 'material-ui';
+import {Spacing} from 'material-ui/lib/styles';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
-// Needed for onTouchTap
-// Can go away when react 1.0 release
-// Check this repo:
-// https://github.com/zilverline/react-tap-event-plugin
-injectTapEventPlugin();
 
 const initialState = {
     document: null,
@@ -25,7 +23,16 @@ let store = configureStore();
 
 ReactDOM.render(
     <Provider store={store}>
-        <MaybeDocument />
+        <div>
+            <AppBar zDepth={4} style={{position: 'fixed', top: 0}} title="Core Viewer"/>
+            <div style={{
+            paddingTop: Spacing.desktopKeylineIncrement,
+                margin: Spacing.desktopGutter
+            }}>
+                <MaybeDocument />
+                <ErrorList />
+            </div>
+        </div>
     </Provider>,
     document.getElementById('nostril')
 );

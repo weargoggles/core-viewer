@@ -23,6 +23,9 @@ export default function configureStore() {
             return true
         });
     }
+    else {
+        injectTapEventPlugin();
+    }
 
     return store;
 }

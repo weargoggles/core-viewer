@@ -1,8 +1,9 @@
 import React, {PropTypes} from 'react';
-import {CoreArray, CoreDocument} from 'coreapi';
+import {CoreArray, CoreDocument} from 'coreapi-promise';
 import Link from './link'
 import {map, keys, join} from 'lodash'
 import {Card, CardHeader, CardTitle, CardText, CardActions, List} from 'material-ui';
+import {Spacing} from 'material-ui/lib/styles';
 
 
 let wrapperStyle = {
@@ -35,8 +36,8 @@ const Document = ({document, fetchDocument}) => {
         return (<li key={name}>{name}: {field.toString()}</li>)
     }
 
-    return (<Card key={document.base_url}>
-        <CardTitle title={document.title} actAsExpander={true} showExpandableButton={true} />
+    return (<Card zDepth={2} key={document.base_url} style={{marginBottom: Spacing.desktopGutter}}>
+        <CardTitle title={document.title} />
         <CardText>
             {document.fields.map(fieldToComponent).toList().filter((x) => (x !== null))}
         </CardText>

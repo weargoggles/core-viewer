@@ -30,22 +30,24 @@ let mapDispatchToProps = (dispatch) => {
 let InnerDialogue = (props) => {
     const actions = [
         <FlatButton
+            key="cancel"
             label="Cancel"
             secondary={true}
             onTouchTap={props.onRequestClose}
         />,
         <FlatButton
+            key="action"
             label={props.name.toProperCase()}
             primary={true}
-            onTouchTap={() => { let a = props.handleSubmit(); a.then(function () {props.onRequestClose()}) }}
+            onTouchTap={() => { props.handleSubmit().then(function () {props.onRequestClose()}) }}
         />
     ];
 
     return (
         <FlatButton label={props.name.toProperCase()} onTouchTap={() => (props.onToggle(props.id))}>
-            <Dialog title={props.name} open={props.open} actions={actions} modal={false}>
+            <Dialog title={props.name.toProperCase()} open={props.open} actions={actions} modal={false}>
                 {map(props.link.fields, (x) => (
-                    <div>
+                    <div key={x.name}>
                         <TextField
                             floatingLabelText={x.name}
                             id={x.name}

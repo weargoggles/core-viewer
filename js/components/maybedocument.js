@@ -6,7 +6,7 @@ import {getNewDocument} from '../actions';
 import Document from './document'
 import Link from './link'
 
-import get from 'coreapi';
+import get from 'coreapi-promise';
 
 import {TextField, RaisedButton} from 'material-ui';
 import {reduxForm} from 'redux-form';

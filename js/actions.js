@@ -9,3 +9,5 @@ export const actionInPlace = createAction(
 );
 
 export const toggleDialogue = createAction('TOGGLE_DIALOGUE');
+
+export const closeError = createAction('CLOSE_ERROR');
